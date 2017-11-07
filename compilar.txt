@@ -1,0 +1,15 @@
+Primeiro precisa instalar o pacote allegro-devel (versão 4)
+
+Compilação:
+
+Normal para linux:
+g++ *.c `allegro-config --libs` -O3 -DDEBUG=0 -o tetrubs
+
+Debug para linux:
+g++ *.c `allegro-config --libs` -O3 -DDEBUG=1 -o tetrubs_debug
+
+Normal para windows
+g++ *.c -mwindows -lalleg -DWINDOWS=1 -DDEBUG=0 -O3 -o tetrubs.exe
+
+Debug para windows
+g++ *.c -mwindows -lalleg -DWINDOWS=1 -DDEBUG=1 -O3 -o tetrubs_debug.exe

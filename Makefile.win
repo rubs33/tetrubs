@@ -1,0 +1,36 @@
+# Project: tetrubs
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = tetrubs_private.res
+OBJ  = main.o funcoes.o $(RES)
+LINKOBJ  = main.o funcoes.o $(RES)
+LIBS =  -mwindows -lalleg  -s 
+INCS = 
+CXXINCS = 
+BIN  = tetrubs.exe
+CXXFLAGS = $(CXXINCS)   -Wall -Wextra -O3 -s -O3
+CFLAGS = $(INCS) -DWINDOWS=1 -DDEBUG=0   -Wall -Wextra -O3 -s -O3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before tetrubs.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "tetrubs.exe" $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+funcoes.o: funcoes.c
+	$(CC) -c funcoes.c -o funcoes.o $(CFLAGS)
+
+tetrubs_private.res: tetrubs_private.rc 
+	$(WINDRES) -i tetrubs_private.rc --input-format=rc -o tetrubs_private.res -O coff 
